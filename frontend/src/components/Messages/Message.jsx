@@ -3,7 +3,6 @@ import { extractTime } from "../../utils/extractTime";
 import useConversation from "../../zustand/useConversation";
 
 const Message = ({ message }) => {
-  console.log("sender id", message.senderId);
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
   const fromMe = message.senderId === authUser._id;
@@ -15,21 +14,27 @@ const Message = ({ message }) => {
   const formattedTime = extractTime(message.createdAt);
 
   return (
-    <div className={`chat ${chatClassName}`}>
-      <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
-          <img src={profilePic} alt="" />
+    <>
+      {!message ? (
+        "No Messagge"
+      ) : (
+        <div className={`chat ${chatClassName}`}>
+          <div className="chat-image avatar">
+            <div className="w-10 rounded-full">
+              <img src={profilePic} alt="" />
+            </div>
+          </div>
+          <div className={`chat-bubble text-white ${bubbleBgColor}`}>
+            {message.message}
+          </div>
+          <div
+            className={`chat-footer opacity-50 text-xs flex gap-1 items-center `}
+          >
+            {formattedTime}
+          </div>
         </div>
-      </div>
-      <div className={`chat-bubble text-white ${bubbleBgColor}`}>
-        {message.message}
-      </div>
-      <div
-        className={`chat-footer opacity-50 text-xs flex gap-1 items-center `}
-      >
-        {formattedTime}
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

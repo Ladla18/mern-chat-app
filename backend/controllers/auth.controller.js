@@ -3,9 +3,10 @@ import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
+  console.log("Signupcalled")
   try {
-    const { fullname, username, password, confirmpassword, gender } = req.body;
-    if (password !== confirmpassword) {
+    const { fullname, username, password, confirmPassword, gender } = req.body;
+    if (password !== confirmPassword) {
       return res.status(400).json({ message: "Passwords do not match" });
     }
     const user = await User.findOne({ username });
@@ -57,7 +58,6 @@ export const login = async (req, res) => {
       username:user.username,
       profilePic: user.profilePic,
     });
-    console.log("Login successfull",user.username,user.password)
   } catch (error) {
     console.error("auth.controller.js", " :: Error ❌ : ", error);
   }

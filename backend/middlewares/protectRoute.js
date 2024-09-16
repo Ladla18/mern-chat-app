@@ -12,14 +12,12 @@ const protect = async (req, res, next) => {
     if (!decoded) {
         return res.status(401).json({ success: false, message: "Invalid token" });
     }
-    console.log("Deocoded token = ",decoded)
     const user = await User.findById(decoded.userId)
     if (!user) {
       return res
         .status(401)
         .json({ success: false, message: "User not found" });
     }
-    console.log("User = ",user)
     req.user = user;
     next()
   } catch (error) {

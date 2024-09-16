@@ -6,7 +6,7 @@ const MessageInput = () => {
   const {loading,sendMessage} = useSendMessage()
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    console.log("message is",message)
+ 
     if(!message) return;
     await sendMessage(message)
     setMessage("")

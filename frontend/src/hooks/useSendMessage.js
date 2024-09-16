@@ -6,7 +6,7 @@ import { useState } from "react"
 const useSendMessage = ()=>{
     const [loading,setLoading] = useState(false)
     const {messages,setMessages,selectedConversation} = useConversation()
-    console.log("selected conversid",selectedConversation._id)
+
     const sendMessage = async (message) => {
       try {
         const res = await axios.post(
