@@ -10,8 +10,8 @@ const useSendMessage = ()=>{
     const sendMessage = async (message) => {
       try {
         const res = await axios.post(
-          `/api/messages/send/${selectedConversation._id}`,
-          {message}
+          `https://mern-chat-app-fk6f.onrender.com/api/messages/send/${selectedConversation._id}`,
+          { message }
         );
         const data = res.data;
         if (data.error) throw new Error(data.error);

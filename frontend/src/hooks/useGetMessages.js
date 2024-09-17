@@ -12,7 +12,7 @@ const useGetMessages = () => {
 
       try {
         const res = await axios.get(
-          `/api/messages/${selectedConversation._id}`
+          `https://mern-chat-app-fk6f.onrender.com/api/messages/${selectedConversation._id}`
         );
         const data = res.data;
         

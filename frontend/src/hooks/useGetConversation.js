@@ -10,7 +10,9 @@ useEffect(()=>{
         setLooading(true);
 
         try {
-            const res = await axios.get("/api/users");
+            const res = await axios.get(
+              "https://mern-chat-app-fk6f.onrender.com/api/users"
+            );
             const data = res.data
             if(data.error){
                 throw new Error(data.error)
