@@ -14,7 +14,10 @@ const useLogin = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("api/auth/login", { username, password });
+      const res = await axios.post(
+        "https://mern-chat-app-fk6f.onrender.com/api/auth/login",
+        { username, password }
+      );
       const data = res.data;
       if (data.error) {
         throw new Error(data.error);

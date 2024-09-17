@@ -6,10 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    proxy: {
-      "/api": {
-        target: "https://mern-chat-app-fk6f.onrender.com",
-      },
-    },
+
   },
 });

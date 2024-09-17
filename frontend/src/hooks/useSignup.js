@@ -22,13 +22,16 @@ const useSignup = () => {
     if (!success) return;
     setLoading(true);
     try {
-      const res = await axios.post("/api/auth/signup", {
-        fullname,
-        username,
-        password,
-        confirmPassword,
-        gender,
-      });
+      const res = await axios.post(
+        "https://mern-chat-app-fk6f.onrender.com/api/auth/signup",
+        {
+          fullname,
+          username,
+          password,
+          confirmPassword,
+          gender,
+        }
+      );
       const data = res.data; // Access the response data directly
       console.log(data);
       if(data.error){
